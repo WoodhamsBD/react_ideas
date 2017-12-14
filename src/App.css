@@ -9,8 +9,11 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
+  text-align: center;
+  padding: 20px;
+  margin: 15px;
   color: white;
 }
 
@@ -22,7 +25,44 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.board{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tile {
+  height: auto;
+  width: 150px;
+  margin: 10px;
+  padding: 5px;
+  background: lightblue;
+  flex-direction: row;
+  text-align: left;
+}
+
+.newIdeaButton {
+  background: darkblue;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0 10px 0 10px;
+  padding: 10px;
+}
+
+.input {
+  border: 0;
+  background: none;
+  outline: none;
+  margin-top: 10px;
+  width: 150px;
+}
+
+.input:focus {
+  border: solid 1px lightgray;
+}
+
+textarea {
+  resize: none;
+  height: 90px;
 }
