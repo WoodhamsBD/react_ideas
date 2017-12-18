@@ -23,6 +23,7 @@ class IdeaForm extends React.Component {
     // id for api put from idea props
     const id = this.props.idea.id;
 
+    // Send update
     axios.put(
       'http://localhost:3001/api/v1/ideas/' + id,
       {
@@ -30,6 +31,7 @@ class IdeaForm extends React.Component {
       })
       .then(res => {
         console.log(res)
+        this.props.updateIdea(res.data)
       })
       .catch(err => console.log(err))
   }

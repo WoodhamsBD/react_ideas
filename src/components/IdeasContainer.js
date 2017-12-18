@@ -11,6 +11,7 @@ class IdeasContainer extends React.Component {
     this.state = {
       ideas: [],
       editingIdeaId: null,
+      notificaiton: ''
     }
   }
 
@@ -24,6 +25,7 @@ class IdeasContainer extends React.Component {
     .catch(error => console.log(error))
   }
 
+  // Update function for addition on ideas to DB
   addNewIdea = () => {
     Axios.post(
       'http://localhost:3001/api/v1/ideas', 
@@ -47,6 +49,7 @@ class IdeasContainer extends React.Component {
     .catch(error => console.log(error))
   }
 
+  // Update idea function and utilize update function from immutability-helper
   updateIdea = (idea) => {
     const ideaIndex = this.state.ideas.findIndex(x => x.id === idea.id)
     const ideas = update(this.state.ideas, {
@@ -54,6 +57,7 @@ class IdeasContainer extends React.Component {
     })
     this.setState({
       ideas: ideas,
+      notification: 'Changes Saved'
     })
   }
 
@@ -67,13 +71,13 @@ class IdeasContainer extends React.Component {
         </div>
 
         <div className="board">
-        {this.state.ideas.map((idea) => {
-          if (this.state.editingIdeaId === idea.id) {
-            return(<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} />)
-          } else {
-            return (<Idea idea={idea} key={idea.id} />)
-          }
-        })}
+          {this.state.ideas.map((idea) => {
+            if (this.state.editingIdeaId === idea.id) {
+              return(<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} />)
+            } else {
+              return (<Idea idea={idea} key={idea.id} />)
+            }
+          })}
         </div>
       </div>
     )
