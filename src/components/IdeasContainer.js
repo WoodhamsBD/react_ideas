@@ -70,7 +70,7 @@ class IdeasContainer extends React.Component {
     this.setState({editingIdeaId: id})
   }
 
-
+  // Render
   render() {
     return (
       <div>
