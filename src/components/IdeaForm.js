@@ -12,8 +12,10 @@ class IdeaForm extends React.Component {
   }
 
   handleInput = (el) => {
+    this.props.resetNotication()
     this.setState({[el.target.name]: el.target.value})
   }
+  
 
   handleBlur = () => {
     const idea = {

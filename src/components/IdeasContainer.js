@@ -11,7 +11,7 @@ class IdeasContainer extends React.Component {
     this.state = {
       ideas: [],
       editingIdeaId: null,
-      notificaiton: ''
+      notification: ''
     }
   }
 
@@ -61,6 +61,16 @@ class IdeasContainer extends React.Component {
     })
   }
 
+  // reset state of notification for update clear
+  resetNotication = () => {
+    this.setState({notification: ''})
+  }
+
+  enableEditing = (id) => {
+    this.setState({editingIdeaId: id})
+  }
+
+
   render() {
     return (
       <div>
@@ -68,12 +78,15 @@ class IdeasContainer extends React.Component {
           <button className="newIdeaButton" onClick={this.addNewIdea}>
             New Idea
           </button>
+          <span className="notification">
+            {this.state.notification}
+          </span>
         </div>
 
         <div className="board">
           {this.state.ideas.map((idea) => {
             if (this.state.editingIdeaId === idea.id) {
-              return(<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} />)
+              return(<IdeaForm idea={idea} key={idea.id} onClick={this.enableEditing} updateIdea={this.updateIdea} resetNotication={this.resetNotication} />)
             } else {
               return (<Idea idea={idea} key={idea.id} />)
             }

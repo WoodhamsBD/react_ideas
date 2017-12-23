@@ -66,3 +66,9 @@ textarea {
   resize: none;
   height: 90px;
 }
+
+.notification {
+  color: green;
+  font-size: 18px;
+  margin: 0 10px 0 10px;
+}
